@@ -1,12 +1,12 @@
 variable "aws_availability_zone" {
   type        = string
-  default     = "eu-west-1a"
+  default     = ""
   description = "The availability zone of the resource."
 }
 
 variable "aws_region" {
   type        = string
-  default     = "eu-west-1"
+  default     = "us-east-1"
   description = "The region of the aws account"
 }
 
@@ -19,7 +19,7 @@ variable "certificate_arn" {
 variable "dagster_config_bucket" {
   type        = string
   description = "Dagster bucket containing the config files."
-  default     = "dagster-bucket"
+  default     = "dagster-bucket-travis"
 }
 
 variable "dagster-container-home" {
@@ -76,7 +76,7 @@ variable "private_subnet" {
 
 variable "public_subnet" {
   type        = list(string)
-  default     = []
+  default     = ["subnet-0416be1694a124308", "subnet-02db4397d3d901a9b"]
   description = "The public subnet where the load balancer should reside. Moreover, the ecs and rds will use these if no private subnets are defined. At least two should be provided."
 
   validation {
@@ -105,14 +105,14 @@ variable "rds_instance_class" {
 
 variable "rds_password" {
   type        = string
-  default     = ""
+  default     = "password"
   description = "The password to access the RDS instance."
   sensitive   = true
 }
 
 variable "rds_username" {
   type        = string
-  default     = ""
+  default     = "dagster_rds"
   description = "The username to access the RDS instance."
 }
 
@@ -148,7 +148,7 @@ variable "use_https" {
 
 variable "vpc" {
   type        = string
-  default     = ""
+  default     = "vpc-0cc006e54812ccf99"
   description = "The id of the virtual private cloud."
 }
 

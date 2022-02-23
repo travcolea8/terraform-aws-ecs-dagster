@@ -1,10 +1,6 @@
 resource "aws_s3_bucket" "repository_bucket" {
   bucket = var.dagster_config_bucket
-  acl    = "private"
 
-  versioning {
-    enabled = true
-  }
 }
 
 # Upload workspace config file
